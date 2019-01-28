@@ -1,1 +1,1 @@
-include 'liblinphone-sdk'
+include ':liblinphone-sdk-release', ':liblinphone-sdk-sources', ':liblinphone-sdk-javadoc'

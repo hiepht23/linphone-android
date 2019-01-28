@@ -354,17 +354,17 @@ public class ContactsManager extends ContentObserver implements FriendListListen
 
     }
 
-    @Override
-    public void onPresenceReceived(FriendList list, Friend[] friends) {
-        for (Friend lf : friends) {
-            boolean newContact = ContactsManager.getInstance().refreshSipContact(lf);
-            if (newContact) {
-                for (ContactsUpdatedListener listener : contactsUpdatedListeners) {
-                    listener.onContactsUpdated();
-                }
-            }
-        }
-    }
+//    @Override
+//    public void onPresenceReceived(FriendList list, Friend[] friends) {
+//        for (Friend lf : friends) {
+//            boolean newContact = ContactsManager.getInstance().refreshSipContact(lf);
+//            if (newContact) {
+//                for (ContactsUpdatedListener listener : contactsUpdatedListeners) {
+//                    listener.onContactsUpdated();
+//                }
+//            }
+//        }
+//    }
 
     public void fetchContactsSync() {
         if (mActivity == null && LinphoneActivity.isInstanciated()) {

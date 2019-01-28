@@ -2,6 +2,7 @@ package org.linphone.tester;
 
 import java.util.List;
 
+import org.linphone.core.CoreListenerStub;
 import org.linphone.core.Factory;
 import org.linphone.mediastream.Version;
 
@@ -49,7 +50,6 @@ public class Tester {
 			Version.dumpCapabilities();
 		}
 	}
-
 	public static native void setApplicationContext(Context ct);
 	public static native void removeApplicationContext();
 	public native int run(String args[]);

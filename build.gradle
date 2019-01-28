@@ -15,14 +15,18 @@ buildscript {
     repositories {
         mavenCentral()
         mavenLocal()
+        maven { url "https://maven.google.com" }
         google()
-	jcenter()
+        jcenter()
+        flatDir {
+            dirs 'libs'
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.0'
-	if (googleFile.exists()) {
+        if (googleFile.exists()) {
             classpath 'com.google.gms:google-services:3.1.0'
-	}
+        }
     }
 }
 
@@ -31,7 +35,7 @@ allprojects {
         mavenCentral()
         mavenLocal()
         google()
-	jcenter()
+        jcenter()
     }
 }
 
@@ -44,14 +48,24 @@ dependencies {
     androidTestImplementation 'com.jayway.android.robotium:robotium-solo:5.6.3'
     androidTestImplementation 'junit:junit:4.12'
     implementation 'org.apache.commons:commons-compress:1.16.1'
-    if (firebaseEnable()) {
+//    if (firebaseEnable()) {
         implementation 'com.google.firebase:firebase-messaging:15.0.2'
-    }
+//    }
+
+    implementation 'com.google.firebase:firebase-ads:9.2.0'
     implementation 'com.android.support:support-v4:27.1.1'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
-    implementation project(':liblinphone-sdk')
+    //    implementation files('liblinphone_tester/libs/liblinphone-sdk-sources.jar')
+    //    implementation files('liblinphone_tester/libs/liblinphone-sdk-javadoc.jar')
+    //    implementation files('libs/liblinphone-sdk-javadoc.jar')
+    //    implementation files('libs/liblinphone-sdk-sources.jar')
+    //    implementation(name:'liblinphone-sdk-release', ext:'aar')
+    implementation project(':liblinphone-sdk-javadoc')
+    implementation project(':liblinphone-sdk-release')
+    implementation project(':liblinphone-sdk-sources')
+    implementation 'com.android.support:appcompat-v7:+'
 }
 
 if (firebaseEnable()) {
@@ -94,6 +108,7 @@ android {
         // but continue the build even when errors are found:
         abortOnError false
         disable 'MissingTranslation', 'UnusedResources'
+
     }
     // Signing
     signingConfigs {
@@ -160,6 +175,11 @@ android {
         pickFirst 'META-INF/NOTICE'
         pickFirst 'META-INF/LICENSE'
         exclude 'META-INF/MANIFEST.MF'
+    }
+    externalNativeBuild {
+
+
+
     }
 }
 

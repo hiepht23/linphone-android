@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="org.linphone"
+<manifest xmlns:tools="http://schemas.android.com/tools"
+    package="org.linphone"
           xmlns:android="http://schemas.android.com/apk/res/android"
           android:installLocation="auto"
           android:versionCode="4002"
           android:versionName="4.0.1">
 
     <uses-sdk
-        android:minSdkVersion="16"
+        android:minSdkVersion="20"
         android:targetSdkVersion="28"/>
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -96,7 +97,7 @@
                 <data android:scheme="sip"/>
                 <data android:scheme="imto"/>
             </intent-filter>
-            <intent-filter>
+            <intent-filter tools:ignore="AppLinkUrlError">
                 <data android:mimeType="@string/sync_mimetype"/> <!-- Change package in res/values/non_localizable_custom.xml ! -->
                 <action android:name="android.intent.action.VIEW"/>
 
@@ -224,7 +225,7 @@
                 android:name="android.accounts.AccountAuthenticator"
                 android:resource="@xml/authenticator"/>
         </service>
-        
+
         <receiver
             android:name=".receivers.BluetoothManager"
             android:enabled="false">

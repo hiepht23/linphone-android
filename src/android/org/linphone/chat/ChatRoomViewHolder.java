@@ -90,11 +90,11 @@ public class ChatRoomViewHolder extends RecyclerView.ViewHolder implements View.
                 lastMessageView.setText(text);
             }
             date.setText(LinphoneUtils.timestampToHumanDate(mContext, mRoom.getLastUpdateTime(), R.string.messages_list_date_format));
-            for (Content c : lastMessage.getContents()) {
-                if (c.isFile() || c.isFileTransfer()) {
-                    lastMessageFileTransfer.setVisibility(View.VISIBLE);
-                }
-            }
+//            for (Content c : lastMessage.getContents()) {
+//                if (c.isFile() || c.isFileTransfer()) {
+//                    lastMessageFileTransfer.setVisibility(View.VISIBLE);
+//                }
+//            }
         }
 
         lastMessageSenderView.setText(getSender(mRoom));

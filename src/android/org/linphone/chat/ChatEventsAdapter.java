@@ -306,13 +306,13 @@ public class ChatEventsAdapter extends SelectableAdapter<ChatBubbleViewHolder> {
 
             boolean hasFile = message.getAppdata() != null;
             boolean hasFileTransfer = externalBodyUrl != null;
-            for (Content c : message.getContents()) {
-                if (c.isFile()) {
-                    hasFile = true;
-                } else if (c.isFileTransfer()) {
-                    hasFileTransfer = true;
-                }
-            }
+//            for (Content c : message.getContents()) {
+//                if (c.isFile()) {
+//                    hasFile = true;
+//                } else if (c.isFileTransfer()) {
+//                    hasFileTransfer = true;
+//                }
+//            }
             if (hasFile) { // Something to display
                 displayAttachedFile(message, holder);
             }
@@ -517,13 +517,13 @@ public class ChatEventsAdapter extends SelectableAdapter<ChatBubbleViewHolder> {
         holder.fileName.setVisibility(View.VISIBLE);
 
         String appData = message.getAppdata();
-        if (appData == null) {
-            for (Content c : message.getContents()) {
-                if (c.isFile()) {
-                    appData = c.getFilePath();
-                }
-            }
-        }
+//        if (appData == null) {
+//            for (Content c : message.getContents()) {
+//                if (c.isFile()) {
+//                    appData = c.getFilePath();
+//                }
+//            }
+//        }
 
         if (appData != null) {
             LinphoneUtils.scanFile(message);

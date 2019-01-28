@@ -199,9 +199,9 @@ public class DialerFragment extends Fragment {
                 mCall.setImageResource(R.drawable.call_add);
                 mCall.resetClickListener();
             }
-            mAddContact.setEnabled(true);
-            mAddContact.setImageResource(R.drawable.call_alt_back);
-            mAddContact.setOnClickListener(cancelListener);
+
+
+
         } else {
             if (LinphoneManager.getLc().getVideoActivationPolicy().getAutomaticallyInitiate()) {
                 mCall.setImageResource(R.drawable.call_video_start);

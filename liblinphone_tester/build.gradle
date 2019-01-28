@@ -23,6 +23,9 @@ allprojects {
     mavenCentral()
     mavenLocal()
     google()
+    flatDir {
+      dirs 'libs'
+    }
   }
 }
 
@@ -30,14 +33,18 @@ apply plugin: 'com.android.application'
 
 dependencies {
   androidTestCompile 'org.apache.commons:commons-compress:1.16.1'
-  androidTestCompile group: 'junit', name: 'junit', version: '+'
-  androidTestCompile group: 'com.jayway.android.robotium', name: 'robotium', version: '+'
-  androidTestCompile fileTree(dir: 'libs', include: 'android-junit-report*.jar')
-  compile 'org.apache.commons:commons-compress:1.16.1'
-  compile group: 'junit', name: 'junit', version: '+'
-  compile group: 'com.jayway.android.robotium', name: 'robotium-solo', version: '+'
-  compile fileTree(dir: 'libs', include: 'android-junit-report*.jar')
-  compile project(":liblinphone-sdk")
+  androidTestCompile 'junit:junit:+'
+  androidTestCompile 'com.jayway.android.robotium:robotium:+'
+  androidTestCompile fileTree(include: 'android-junit-report*.jar', dir: 'libs')
+  implementation 'org.apache.commons:commons-compress:1.16.1'
+  implementation 'junit:junit:+'
+  implementation 'com.jayway.android.robotium:robotium-solo:+'
+  implementation fileTree(include: 'android-junit-report*.jar', dir: 'libs')
+  //  compile project(":liblinphone-sdk")
+//  implementation files('libs/liblinphone-sdk-javadoc.jar')
+//  implementation files('libs/liblinphone-sdk-sources.jar')
+//  implementation files('liblinphone-sdk-release.aar')
+  implementation(name:'liblinphone-sdk-release', ext:'aar')
 }
 
 android {
@@ -99,6 +106,10 @@ android {
     // Or, if you prefer, you can continue to check for errors in release builds,
     // but continue the build even when errors are found:
     abortOnError false
+  }
+    buildToolsVersion = '27.0.3'
+  externalNativeBuild {
+ 
   }
 }
 

@@ -783,13 +783,13 @@ public final class LinphoneUtils {
 
     public static void scanFile(ChatMessage message) {
         String appData = message.getAppdata();
-        if (appData == null) {
-            for (Content c : message.getContents()) {
-                if (c.isFile()) {
-                    appData = c.getFilePath();
-                }
-            }
-        }
+//        if (appData == null) {
+//            for (Content c : message.getContents()) {
+//                if (c.isFile()) {
+//                    appData = c.getFilePath();
+//                }
+//            }
+//        }
         LinphoneManager.getInstance().getMediaScanner().scanFile(new File(appData));
     }
 }
